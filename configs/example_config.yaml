@@ -1,0 +1,42 @@
+model:
+  backbone: "liif"
+  backbone_channels: 64
+  reference_encoder_channels: 64
+  warper: "deformable"
+  fusion: "concat"
+  mlp:
+    hidden_dim: 256
+    num_layers: 4
+    out_dim: 3
+
+data:
+  train_dir: "datasets/train"
+  val_dir: "datasets/val"
+  batch_size: 8
+  num_workers: 4
+  scale_min: 1.0
+  scale_max: 4.0
+  patch_size: 48
+  augment: true
+
+train:
+  optimizer: "adam"
+  lr: 1.0e-4
+  weight_decay: 0.0
+  lr_scheduler: "cosine"
+  epochs: 100
+  save_dir: "checkpoints"
+  log_dir: "runs"
+  save_every: 10
+  val_every: 5
+  resume: null
+
+  loss_weights:
+    reconstruction: 1.0
+    identity: 0.5
+    perceptual: 0.1
+
+eval:
+  checkpoint: "checkpoints/best.pth"
+  save_images: false
+  save_dir: "results"
