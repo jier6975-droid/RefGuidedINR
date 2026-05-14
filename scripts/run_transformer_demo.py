@@ -253,7 +253,7 @@ def main():
         "d_ff": 1024,
         "dropout": 0.1,
         "batch_size": 64,
-        "num_epochs": 20,
+        "num_epochs": 5,
         "learning_rate": 0.0001,
         "num_train_samples": 10000,
         "num_val_samples": 1000,
